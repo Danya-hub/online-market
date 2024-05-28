@@ -1,0 +1,7 @@
+.view-button.active svg {
+    @apply text-purple-800;
+}
+
+.view-button {
+    @apply min-w-8 h-8 flex justify-center items-center;
+}

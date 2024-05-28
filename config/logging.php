@@ -3,7 +3,6 @@
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
-use Monolog\Handler\TelegramBotHandler;
 use Monolog\Processor\PsrLogMessageProcessor;
 
 return [
@@ -131,7 +130,7 @@ return [
         'telegram' => [
             'driver' => 'custom',
             'level' => env('LOG_LEVEL', 'debug'),
-            'via' => TelegramBotHandler::class,
+            'via' => \Support\Logging\TelegramLoggerFactory::class,
             'chat_id' => -4288342814,
             "token" => '7158309303:AAFePu9U9tjTpWICeAFD5OtZDTzwgZp7sRs',
         ],

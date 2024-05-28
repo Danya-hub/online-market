@@ -2,16 +2,16 @@
 
 @section("title", "Изменить пароль")
 @section("content")
-    <x-form.auth-form title="Изменить пароль" :action="route('password.update')">
+    <x-form.auth-form title="Изменить пароль" :action="route('resetPassword.handle')">
         <input type="hidden" name="token" value="{{ $token }}">
 
         <x-form.text-input
             :hasError="$errors->has('password')"
             :value="request('email')"
             name="email"
-            class="w-full"
+            class="w-full mb-4"
             type="email"
-            placeholder="Email"
+            placeholder="Почта"
             required
         ></x-form.text-input>
         @error("email")
@@ -23,7 +23,7 @@
         <x-form.text-input
             :hasError="$errors->has('password')"
             name="password"
-            class="w-full"
+            class="w-full mb-4"
             type="password"
             placeholder="Новый пароль"
             required
@@ -37,7 +37,7 @@
         <x-form.text-input
             :hasError="$errors->has('password_confirmation')"
             name="password_confirmation"
-            class="w-full"
+            class="w-full mb-4"
             type="password"
             placeholder="Подтвердите пароль"
             required
@@ -50,9 +50,10 @@
 
         <x-form.primary-button
             text="Отправить"
+            class="w-full p-2"
         ></x-form.primary-button>
         <div class="mt-6">
-            <a class="block" href="{{ route("login") }}">Вспомнил пароль</a>
+            <a class="block" href="{{ route("login.page") }}">Вспомнил пароль</a>
         </div>
     </x-form.auth-form>
 @endsection

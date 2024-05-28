@@ -1,12 +1,8 @@
-@extends("layouts.auth")
+@extends("layouts.app")
 
 @section("content")
-    @auth
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            @method("DELETE")
-
-            <button type="submit">Выйти</button>
-        </form>
-    @endauth
+    @include("catalog.shared.feature")
+    @include("catalog.shared.category.index")
+    @include("product.shared.index")
+    @include("catalog.shared.brand.index")
 @endsection

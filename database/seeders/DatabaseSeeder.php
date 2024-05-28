@@ -2,19 +2,40 @@
 
 namespace Database\Seeders;
 
-use App\Models\Brand;
-use App\Models\Category;
-use App\Models\Product;
+use Database\Factories\BrandFactory;
+use Database\Factories\CategoryFactory;
+use Database\Factories\OptionFactory;
+use Database\Factories\OptionValueFactory;
+use Database\Factories\ProductFactory;
+use Database\Factories\PropertyFactory;
+use Domain\Product\Models\Product;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        Brand::factory(20)
+        BrandFactory::new()
+            ->count(20)
             ->create();
-        Category::factory(20)
-            ->has(Product::factory(rand(1, 3)))
+
+        $properties = PropertyFactory::new()
+            ->count(10)
+            ->create();
+
+        OptionFactory::new()->count(2)->create();
+        $optionsValues = OptionValueFactory::new()->count(10)->create();
+
+        CategoryFactory::new()
+            ->count(20)
+            ->has(
+                ProductFactory::new()
+                    ->count(10)
+                    ->hasAttached($optionsValues)
+                    ->hasAttached($properties, function () {
+                        return ['value' => ucfirst(fake()->word())];
+                    })
+            )
             ->create();
     }
 }

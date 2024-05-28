@@ -4,13 +4,14 @@
     "hasError" => false,
 ])
 
-<label>
+<label class="flex items-center">
     <input
         type="{{ $type }}"
         value="{{ $value }}"
         {{ $attributes->class([
             "border-red-600" => $hasError,
-            "block border-2 p-2 my-2 w-full",
+            "block border-2 p-2 w-full",
         ]) }}
     >
+    {{ $slot }}
 </label>
