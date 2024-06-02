@@ -1,0 +1,11 @@
+.spacing-table {
+    @apply border-separate border-spacing-y-4;
+}
+
+.spacing-table td {
+    @apply bg-gray-100 p-4;
+}
+
+.spacing-table th {
+    @apply p-2;
+}

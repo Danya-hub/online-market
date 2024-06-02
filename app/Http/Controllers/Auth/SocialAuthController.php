@@ -8,6 +8,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use Support\SessionRegenerator;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Throwable;
 
@@ -39,7 +40,7 @@ class SocialAuthController
             'password' => bcrypt(str()->random(20)),
         ]);
 
-        Auth::login($user);
+        SessionRegenerator::run(fn() => Auth::login($user));
 
         return redirect()
             ->intended(route("home"));

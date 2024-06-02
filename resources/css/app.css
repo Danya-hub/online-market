@@ -1,4 +1,5 @@
 @import "views/components/filter-button.css";
+@import "views/components/table.css";
 
 @tailwind base;
 @tailwind components;
