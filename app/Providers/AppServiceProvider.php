@@ -13,13 +13,17 @@ use Services\Telegram\TelegramBotApiContract;
 
 class AppServiceProvider extends ServiceProvider
 {
+    public function register(): void
+    {
+        $this->app->bind(TelegramBotApiContract::class, TelegramBotApi::class);
+    }
+
     public function boot(): void
     {
         Paginator::useTailwind();
 
         Model::shouldBeStrict(!app()->isProduction());
 
-        $this->app->bind(TelegramBotApiContract::class, TelegramBotApi::class);
 
         if (app()->isProduction()) {
             DB::listen(function ($query) {

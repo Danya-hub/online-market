@@ -3,11 +3,21 @@
 namespace Domain\Auth\DTOs;
 
 use Illuminate\Http\Request;
+use Support\DTOs\DTOContract;
 use Support\Traits\Makeable;
 
-class NewUserDTO
+class NewUserDTO implements DTOContract
 {
     use Makeable;
+
+    public static function allowedKeys(): array
+    {
+        return [
+            'name',
+            'email',
+            'password',
+        ];
+    }
 
     public function __construct(
         public readonly string $name,
@@ -20,6 +30,7 @@ class NewUserDTO
 
     public static function fromRequest(Request $request): NewUserDTO
     {
-        return static::make(...$request->only(['name', 'email', 'password']));
+        return static::make(...$request
+            ->only(self::allowedKeys()));
     }
 }

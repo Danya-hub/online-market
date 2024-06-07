@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Requests\SignUpFormRequest;
+use Domain\Auth\Contracts\PlaceOrderContract;
 use Domain\Auth\Contracts\RegisterNewUserContract;
 use Domain\Auth\DTOs\NewUserDTO;
 use Illuminate\Contracts\View\Factory;

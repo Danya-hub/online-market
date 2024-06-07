@@ -13,6 +13,13 @@ class CatalogServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(FilterManager::class);
+
+        $this->app->bind(Sorter::class, function () {
+            return new Sorter([
+                "title",
+                "price",
+            ]);
+        });
     }
 
     public function boot(): void
@@ -21,12 +28,5 @@ class CatalogServiceProvider extends ServiceProvider
             new PriceFilter(),
             new BrandFilter(),
         ]);
-
-        $this->app->bind(Sorter::class, function () {
-            return new Sorter([
-                "title",
-                "price",
-            ]);
-        });
     }
 }

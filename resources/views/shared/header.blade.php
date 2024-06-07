@@ -1,4 +1,4 @@
-<header class="flex p-3 justify-evenly">
+<header class="flex p-3 justify-between">
     <div class="flex items-center mx-3">
         <x-shared.logo></x-shared.logo>
         <x-form.search-input

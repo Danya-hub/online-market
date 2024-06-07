@@ -82,7 +82,7 @@ class CartManager
                 'product_id' => $product->getKey(),
                 'string_option_values' => $this->stringedOptionValues($optionValues),
             ], [
-                'cart_id' => $cart->getKey(), //?
+                'cart_id' => $cart->getKey(),
                 'price' => $product->price,
                 'quantity' => DB::raw("quantity + $quantity"),
                 'string_option_values' => $this->stringedOptionValues($optionValues),

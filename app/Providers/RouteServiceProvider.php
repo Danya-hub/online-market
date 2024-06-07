@@ -7,6 +7,7 @@ use App\Routing\AppRegistrar;
 use App\Routing\AuthRegistrar;
 use App\Routing\CartRegistrar;
 use App\Routing\CatalogRegistrar;
+use App\Routing\OrderRegistrar;
 use App\Routing\ProductRegistrar;
 use Illuminate\Contracts\Routing\Registrar;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -17,12 +18,12 @@ class RouteServiceProvider extends ServiceProvider
     public const HOME = '/';
 
     protected array $registrars = [
-        \App\Routing\PaymentMethodRegistrar::class,
         CartRegistrar::class,
         AppRegistrar::class,
         AuthRegistrar::class,
         CatalogRegistrar::class,
         ProductRegistrar::class,
+        OrderRegistrar::class,
     ];
 
     public function boot(): void

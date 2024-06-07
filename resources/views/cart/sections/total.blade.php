@@ -9,6 +9,6 @@
     </form>
     <div>
         <a href="{{ route('catalog') }}" class="bg-gray-400 px-4 py-3 rounded">За покупками</a>
-        <a href="#" class="bg-green-400 px-4 py-3 rounded ms-3">Оформить заказ</a>
+        <a href="{{ route('order.page') }}" class="bg-green-400 px-4 py-3 rounded ms-3">Оформить заказ</a>
     </div>
 </div>
