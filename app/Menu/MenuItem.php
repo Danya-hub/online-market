@@ -36,7 +36,7 @@ class MenuItem
     {
         $path = parse_url($this->link(), PHP_URL_PATH) ?? "/";
 
-        if ($path === "/") {
+        if ($path === ("/" . session()->get('locale'))) {
             return request()->path() === $path;
         }
 

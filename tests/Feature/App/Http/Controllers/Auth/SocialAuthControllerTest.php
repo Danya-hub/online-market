@@ -63,7 +63,7 @@ class SocialAuthControllerTest extends TestCase
         $this->mockSocialiteCallback($githubId);
 
         $this->callbackRequest()
-            ->assertRedirect(route('home'));
+            ->assertRedirect(route('home.page'));
 
         $this->assertAuthenticated();
 
@@ -91,7 +91,7 @@ class SocialAuthControllerTest extends TestCase
         $this->mockSocialiteCallback($githubId);
 
         $this->callbackRequest()
-            ->assertRedirect(route('home'));
+            ->assertRedirect(route('home.page'));
 
         $this->assertAuthenticated();
     }

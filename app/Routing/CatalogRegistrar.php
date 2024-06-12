@@ -13,9 +13,9 @@ class CatalogRegistrar implements RouteRegistrar
     public function map(Registrar $registrar): void
     {
         Route::middleware("web")->group(function () {
-            Route::get('/catalog/{category:slug?}', CatalogController::class)
+            Route::get('/{locale?}/catalog/{category:slug?}', CatalogController::class)
                 ->middleware([CatalogViewMiddleware::class])
-                ->name("catalog");
+                ->name("catalog.page");
         });
     }
 }

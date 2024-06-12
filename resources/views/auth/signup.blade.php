@@ -68,7 +68,7 @@
         <div class="mt-6">
             <x-form.signup-using></x-form.signup-using>
             <div class="mt-3">
-                <a class="block" href="{{ route("login.page") }}">Войти</a>
+                <a class="block" href="{{ route("login.page", ['locale' => session()->get('locale')]) }}">Войти</a>
             </div>
         </div>
     </x-form.auth-form>

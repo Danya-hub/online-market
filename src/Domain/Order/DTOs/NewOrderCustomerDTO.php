@@ -3,24 +3,13 @@
 namespace Domain\Order\DTOs;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Support\DTOs\DTOContract;
 use Support\Traits\Makeable;
 
-class NewOrderCustomerDTO implements DTOContract
+class NewOrderCustomerDTO
 {
     use Makeable;
-
-    public static function allowedKeys(): array
-    {
-        return [
-            'first_name',
-            'last_name',
-            'phone',
-            'email',
-            'city',
-            'address',
-        ];
-    }
 
     public function __construct(
         public readonly string|null $first_name,
@@ -33,15 +22,32 @@ class NewOrderCustomerDTO implements DTOContract
     {
     }
 
-    public static function fromRequest(Request $request): NewOrderCustomerDTO
+    public function fullName(): string
     {
-        return static::make(...$request->only(self::allowedKeys()));
+        return trim($this->first_name . ' ' . $this->last_name);
     }
 
     public static function fromArray(array $data): NewOrderCustomerDTO
     {
-        return static::make(...collect($data)
-            ->only(self::allowedKeys())
-            ->toArray());
+        return static::make([
+            $data['first_name'],
+            $data['last_name'],
+            $data['phone'],
+            $data['email'],
+            $data['city'],
+            $data['address'],
+        ]);
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+            'phone' => $this->phone,
+            'email' => $this->email,
+            'city' => $this->city,
+            'address' => $this->address,
+        ];
     }
 }

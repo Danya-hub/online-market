@@ -46,7 +46,11 @@ class OrderController extends Controller
      */
     public function handle(OrderFormRequest $request, PlaceOrderContract $action): RedirectResponse
     {
-        $order = $action(NewOrderDTO::fromRequest($request));
+        $order = $action(
+            NewOrderDTO::fromRequest($request),
+            NewOrderCustomerDTO::fromArray(request('customer')),
+            $request->boolean('create_account'),
+        );
 
         (new OrderProcess($order))
             ->processes([
@@ -62,6 +66,6 @@ class OrderController extends Controller
             ->run();
 
         return redirect()
-            ->route('home');
+            ->route('home.page');
     }
 }

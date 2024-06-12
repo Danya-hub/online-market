@@ -19,14 +19,7 @@ class AssignCustomer implements OrderProcessContract
     public function handle(Order $order, Closure $next)
     {
         $order->orderCustomer()
-            ->create([
-                'first_name' => $this->customer->first_name,
-                'last_name' => $this->customer->last_name,
-                'phone' => $this->customer->phone,
-                'email' => $this->customer->email,
-                'city' => $this->customer->city,
-                'address' => $this->customer->address,
-            ]);
+            ->create($this->customer->toArray());
 
         return $next($order);
     }

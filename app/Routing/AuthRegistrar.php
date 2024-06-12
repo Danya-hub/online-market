@@ -17,7 +17,7 @@ class AuthRegistrar implements RouteRegistrar
     {
         Route::middleware("web")->group(function () {
             Route::controller(SignInController::class)->group(function () {
-                Route::get('/login', "page")
+                Route::get('/{locale?}/login', "page")
                     ->name("login.page");
                 Route::post('/login', "handle")
                     ->middleware("throttle:auth")
@@ -27,7 +27,7 @@ class AuthRegistrar implements RouteRegistrar
             });
 
             Route::controller(SignUpController::class)->group(function () {
-                Route::get('/signup', "page")
+                Route::get('/{locale?}/signup', "page")
                     ->name("signup.page");
                 Route::post('/signup', "handle")
                     ->middleware("throttle:auth")
@@ -35,7 +35,7 @@ class AuthRegistrar implements RouteRegistrar
             });
 
             Route::controller(ForgotPasswordController::class)->group(function () {
-                Route::get('/forgot-password', "page")
+                Route::get('/{locale?}/forgot-password', "page")
                     ->middleware('guest')
                     ->name("forgotPassword.page");
                 Route::post('/forgot-password', "handle")
@@ -44,7 +44,7 @@ class AuthRegistrar implements RouteRegistrar
             });
 
             Route::controller(ResetPasswordController::class)->group(function () {
-                Route::get('/reset-password/{token}', 'page')
+                Route::get('/{locale?}/reset-password/{token}', 'page')
                     ->middleware('guest')
                     ->name('password.reset');
                 Route::post('/reset-password', 'handle')

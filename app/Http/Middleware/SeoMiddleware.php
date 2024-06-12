@@ -17,9 +17,11 @@ class SeoMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $seo = Cache::rememberForever('seo_' . str($request->getPathInfo())->slug('_'), function () use ($request) {
-            return Seo::query()->where('url', $request->getPathInfo())->first() ?? false;
-        });
+        $cacheKey = 'seo_' . str($request->getPathInfo())->slug('_');
+
+        $seo = unserialize(Cache::rememberForever($cacheKey, function () use ($request) {
+            return serialize(Seo::query()->where('url', $request->getPathInfo())->first());
+        }));
 
         if ($seo) {
             view()->share('seo_title', $seo->title);

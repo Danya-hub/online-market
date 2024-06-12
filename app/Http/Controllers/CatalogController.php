@@ -10,7 +10,7 @@ use Illuminate\Foundation\Application;
 
 class CatalogController extends Controller
 {
-    public function __invoke(?Category $category): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    public function __invoke(string $locale, ?Category $category): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view("catalog.index", new CatalogViewModel($category));
     }

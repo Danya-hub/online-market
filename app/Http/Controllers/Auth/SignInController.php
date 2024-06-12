@@ -26,14 +26,13 @@ class SignInController
 
         SessionRegenerator::run();
 
-        return redirect()->intended(route("home"));
+        return redirect()->intended(localized_route('home.page'));
     }
 
     public function logout(): RedirectResponse
     {
         SessionRegenerator::run(fn() => auth()->logout());
 
-        return redirect()
-            ->route("home");
+        return redirect(localized_route('home.page'));
     }
 }

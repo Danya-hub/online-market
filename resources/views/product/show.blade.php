@@ -4,9 +4,11 @@
     <x-navigation.breadcrumbs
         class="mt-6"
         :routes="[
-            [route('home'), 'Главная'],
-            [route('catalog'), 'Каталог'],
-            ...($product->exists ? [[route('product', $product), $product->title]] : [])
+            [localized_route('home.page'), 'Главная'],
+            [localized_route('catalog.page'), 'Каталог'],
+            ...($product->exists ? [[localized_route('product.page', [
+                'product' => $product,
+            ]), $product->title]] : [])
         ]"
     ></x-navigation.breadcrumbs>
     @include('product.sections.about.index')

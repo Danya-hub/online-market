@@ -1,15 +1,18 @@
-<header class="flex p-3 justify-between">
+<header class="flex p-3 justify-between items-center">
     <div class="flex items-center mx-3">
         <x-shared.logo></x-shared.logo>
         <x-form.search-input
             method="GET"
-            :action="route('catalog')"
+            :action="localized_route('catalog.page')"
             placeholder="Поиск..."
             class="ml-5"
             requestName="s"
         ></x-form.search-input>
     </div>
     <x-partials.header.navigation></x-partials.header.navigation>
+    <div>
+        <x-shared.langs></x-shared.langs>
+    </div>
     <div class="flex mx-3">
         @auth
             <x-shared.profile

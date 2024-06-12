@@ -53,7 +53,7 @@
             class="w-full p-2"
         ></x-form.primary-button>
         <div class="mt-6">
-            <a class="block" href="{{ route("login.page") }}">Вспомнил пароль</a>
+            <a class="block" href="{{ route("login.page", ['locale' => session()->get('locale')]) }}">Вспомнил пароль</a>
         </div>
     </x-form.auth-form>
 @endsection

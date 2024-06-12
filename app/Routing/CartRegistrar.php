@@ -13,13 +13,17 @@ class CartRegistrar implements RouteRegistrar
     {
         Route::middleware('web')->group(function () {
             Route::controller(CartController::class)
-                ->prefix('cart')
                 ->group(function () {
-                    Route::get('/', 'index')->name('cart');
-                    Route::post('/{product}/add', 'add')->name('cart.add');
-                    Route::post('/{item}/quantity', 'quantity')->name('cart.quantity');
-                    Route::delete('/{item}/delete', 'delete')->name('cart.delete');
-                    Route::delete('/truncate', 'truncate')->name('cart.truncate');
+                    Route::get('/{locale?}/cart', 'index')
+                        ->name('cart.page');
+                    Route::post('/cart/{product}/add', 'add')
+                        ->name('cart.add');
+                    Route::post('/cart/{item}/quantity', 'quantity')
+                        ->name('cart.quantity');
+                    Route::delete('/cart/{item}/delete', 'delete')
+                        ->name('cart.delete');
+                    Route::delete('/cart/truncate', 'truncate')
+                        ->name('cart.truncate');
                 });
         });
     }

@@ -130,7 +130,7 @@ class SignUpControllerTest extends TestCase
      */
     public function it_authenticated_user_and_redirected(): void {
         $this->request()
-            ->assertRedirect(route('home'));
+            ->assertRedirect(route('home.page'));
 
         $this->assertAuthenticatedAs(
             $this->findUser(),

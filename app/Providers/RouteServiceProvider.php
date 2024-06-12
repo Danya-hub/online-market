@@ -7,6 +7,7 @@ use App\Routing\AppRegistrar;
 use App\Routing\AuthRegistrar;
 use App\Routing\CartRegistrar;
 use App\Routing\CatalogRegistrar;
+use App\Routing\LocalizationRegistrar;
 use App\Routing\OrderRegistrar;
 use App\Routing\ProductRegistrar;
 use Illuminate\Contracts\Routing\Registrar;
@@ -24,6 +25,7 @@ class RouteServiceProvider extends ServiceProvider
         CatalogRegistrar::class,
         ProductRegistrar::class,
         OrderRegistrar::class,
+        LocalizationRegistrar::class,
     ];
 
     public function boot(): void
@@ -39,7 +41,7 @@ class RouteServiceProvider extends ServiceProvider
             if (! class_exists($registrar) || ! is_subclass_of($registrar, RouteRegistrar::class)) {
                 throw new RuntimeException(sprintf(
                     'Cannot map routes \'%s\', it is not a valid routes class',
-                    $registrar
+                    $registrar,
                 ));
             }
 

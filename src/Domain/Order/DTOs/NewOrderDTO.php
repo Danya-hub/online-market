@@ -6,20 +6,9 @@ use Illuminate\Http\Request;
 use Support\DTOs\DTOContract;
 use Support\Traits\Makeable;
 
-class NewOrderDTO implements DTOContract
+class NewOrderDTO
 {
     use Makeable;
-
-    public static function allowedKeys(): array
-    {
-        return [
-            'customer',
-            'create_account',
-            'password',
-            'payment_method_id',
-            'delivery_type_id',
-        ];
-    }
 
     public function __construct(
         public readonly array  $customer,
@@ -33,6 +22,12 @@ class NewOrderDTO implements DTOContract
 
     public static function fromRequest(Request $request): NewOrderDTO
     {
-        return static::make(...$request->only(self::allowedKeys()));
+        return static::make(...$request->only([
+            'customer',
+            'create_account',
+            'password',
+            'payment_method_id',
+            'delivery_type_id',
+        ]));
     }
 }

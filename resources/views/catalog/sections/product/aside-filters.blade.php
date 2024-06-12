@@ -1,6 +1,9 @@
 <aside class="p-2">
     <div class="sticky top-4 left-0">
-        <form action="{{ route("catalog", $category) }}">
+        <form action="{{ route("catalog.page", [
+            "locale" => session()->get('locale'),
+            "category" => $category,
+        ]) }}">
             <input type="hidden" name="sort" value="{{ request("sort") }}">
             @foreach(filters() as $filter)
                 {!! $filter !!}
@@ -13,7 +16,10 @@
                 </button>
                 @if(request('filters'))
                     <a
-                        href="{{ route("catalog", $category) }}"
+                        href="{{ route("catalog", [
+                            "category" => $category,
+                            'locale' => session()->get('locale'),
+                        ]) }}"
                         class="block border-2 w-full py-3 mt-4 rounded font-medium text-center"
                     >Сбросить фильтры
                     </a>

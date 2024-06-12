@@ -43,6 +43,6 @@ class SocialAuthController
         SessionRegenerator::run(fn() => Auth::login($user));
 
         return redirect()
-            ->intended(route("home"));
+            ->intended(localized_route('home.page'));
     }
 }

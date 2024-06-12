@@ -10,7 +10,7 @@ use Illuminate\Foundation\Application;
 
 class ProductController extends Controller
 {
-    public function __invoke(Product $product, AlsoProductContract $action): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    public function __invoke(string $locale, Product $product, AlsoProductContract $action): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $product->load(['optionValues.option']);
 

@@ -32,7 +32,7 @@ class Handler extends ExceptionHandler
         $this->renderable(function (DomainException $e) {
             flash()->alert($e->getMessage());
 
-            return redirect()->back() ?? redirect()->route('home');
+            return redirect()->back() ?? redirect(localized_route('home.page'));
         });
     }
 }

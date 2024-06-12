@@ -47,7 +47,7 @@ class SignInControllerTest extends TestCase
         $response = $this->post(action([SignInController::class, 'handle']), $request);
 
         $response->assertValid()
-            ->assertRedirect(route('home'));
+            ->assertRedirect(route('home.page'));
 
         $this->assertAuthenticatedAs($user);
     }
@@ -92,6 +92,6 @@ class SignInControllerTest extends TestCase
     public function it_logged_out_middleware_fail(): void
     {
         $this->delete(action([SignInController::class, 'logout']))
-            ->assertRedirect(route('home'));
+            ->assertRedirect(route('home.page'));
     }
 }

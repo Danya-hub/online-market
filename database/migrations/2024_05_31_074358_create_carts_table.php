@@ -14,12 +14,15 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
+
             $table->string('storage_id');
+
             $table->foreignIdFor(User::class)
                 ->nullable()
                 ->constrained()
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
+
             $table->timestamps();
         });
     }

@@ -38,7 +38,7 @@ class ResetPasswordController
             flash()
                 ->info(__($status));
 
-            return redirect()->route('login.page');
+            return redirect(localized_route('login.page'));
         }
 
         return back()->withErrors(['email' => __($status)]);

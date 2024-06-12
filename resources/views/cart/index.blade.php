@@ -4,8 +4,8 @@
     <x-navigation.breadcrumbs
         class="mt-6"
         :routes="[
-            [route('home'), 'Главная'],
-            [route('cart'), 'Корзина'],
+            [localized_route('home.page'), 'Главная'],
+            [localized_route('cart.page'), 'Корзина'],
         ]"
     ></x-navigation.breadcrumbs>
     @include('cart.sections.index')

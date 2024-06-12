@@ -40,8 +40,8 @@
         <div class="mt-6">
             <x-form.signup-using></x-form.signup-using>
             <div class="mt-3">
-                <a class="block" href="{{ route("forgotPassword.page") }}">Забыли пароль</a>
-                <a class="block mt-2" href="{{ route("signup.page") }}">Регистрация</a>
+                <a class="block" href="{{ route("forgotPassword.page", ['locale' => session()->get('locale')]) }}">Забыли пароль</a>
+                <a class="block mt-2" href="{{ route("signup.page", ['locale' => session()->get('locale')]) }}">Регистрация</a>
             </div>
         </div>
     </x-form.auth-form>

@@ -12,8 +12,10 @@ class OrderRegistrar implements RouteRegistrar
     public function map(Registrar $registrar): void
     {
         Route::middleware('web')->group(function () {
-            Route::get('/order', [OrderController::class, 'page'])->name('order.page');
-            Route::post('/order', [OrderController::class, 'handle'])->name('order.handle');
+            Route::get('/{locale?}/order', [OrderController::class, 'page'])
+                ->name('order.page');
+            Route::post('/order', [OrderController::class, 'handle'])
+                ->name('order.handle');
         });
     }
 }

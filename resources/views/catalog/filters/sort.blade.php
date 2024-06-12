@@ -1,5 +1,8 @@
 <div x-data>
-    <form x-ref="sortForm" action="{{ route("catalog", $category) }}">
+    <form x-ref="sortForm" action="{{ route("catalog.page", [
+        'locale' => session()->get('locale'),
+        'category' => $category,
+    ]) }}">
         <label class="flex items-center">
             <h4>Сортировать по</h4>
             <div x-data="{ sort: '{{ filter_url($category, ['sort' => request('sort')]) }}' }">

@@ -1,5 +1,7 @@
 <li class="bg-gray-200 rounded-2xl shadow">
-    <a href="{{ route("product", $item) }}" class="block rounded-2xl bg-white overflow-hidden h-48">
+    <a href="{{ localized_route('product.page', [
+        'product' => $item,
+    ]) }}" class="block rounded-2xl bg-white overflow-hidden h-48">
         <img class="w-full object-contain" src="{{ $item->makeThumbnail("345x320") }}" alt="{{ $item->title }}">
     </a>
     <div class="p-2">
